@@ -40,7 +40,7 @@ connection = pymysql.connect(host='3.106.121.54', user='student', password='xcce
 
 def question1():
 	# write your query below
-	query = ""
+	query = "select LAST_NAME from Worker;"
 	df = pd.read_sql(query, connection)
 
 	return df
@@ -68,7 +68,7 @@ print(question1())
 
 def question2():
     # write your query below
-	query = ""
+	query = "select DISTINCT Department from Worker Group by DEPARTMENT Order by DEPARTMENT;"
 	df = pd.read_sql(query, connection)
 
 	return df
@@ -102,7 +102,7 @@ print(question2())
 
 def question3():
     # write your query below
-	query = ""
+	query = "select FIRST_NAME, SALARY from Worker Order by FIRST_NAME, SALARY DESC;"
 	df = pd.read_sql(query, connection)
 
 	return df
@@ -131,7 +131,7 @@ print(question3())
 
 def question4():
     # write your query below
-	query = ""
+	query = "select DEPARTMENT, count(*) AS WORKER_NUM from Worker Group by DEPARTMENT Order By WORKER_NUM;"
 	df = pd.read_sql(query, connection)
 
 	return df
@@ -167,7 +167,7 @@ print(question4())
 
 def question5():
     # write your query below
-	query = ""
+	query = "select Title.WORKER_TITLE, Worker.FIRST_NAME, Worker.SALARY from Worker, Title where Title.WORKER_REF_ID = Worker.WORKER_ID order by SALARY DESC, FIRST_NAME;"
 	df = pd.read_sql(query, connection)
 
 	return df
@@ -197,7 +197,7 @@ print(question5())
 
 def question6():
     # write your query below
-	query = ""
+	query = "SELECT Title.WORKER_TITLE, a.FIRST_NAME, a.SALARY FROM Worker a, Title WHERE a.SALARY IN (SELECT b.salary FROM Worker b GROUP BY b.salary HAVING COUNT(*) > 1) and Title.WORKER_REF_ID = a.WORKER_ID ORDER BY a.salary DESC, a.first_name ASC;"
 	df = pd.read_sql(query, connection)
 
 	return df
@@ -216,7 +216,7 @@ print(question6())
 
 def question7():
     # write your query below
-	query = ""
+	query = "SELECT DEPARTMENT, COUNT(*) AS No_Of_Workers from Worker Group by Department Having No_Of_Workers = 4"
 	df = pd.read_sql(query, connection)
 
 	return df
